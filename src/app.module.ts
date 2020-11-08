@@ -2,7 +2,10 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { GraphQLModule } from '@nestjs/graphql';
-import path from 'path';
+import { AuthModule } from './auth/auth.module';
+import { UsersModule } from './users/users.module';
+import { CommonModule } from './common/common.module';
+import { join } from 'path';
 
 @Module({
   imports: [
@@ -13,11 +16,14 @@ import path from 'path';
     GraphQLModule.forRoot({
       typePaths: ['./**/*.graphql'],
       definitions: {
-        path: path.join(process.cwd(), 'src/graphql.schema.ts'),
-        outputAs: 'class',
+        path: join(process.cwd(), 'src/graphql.schema.ts'),
+        outputAs: 'interface',
         emitTypenameField: true,
       },
     }),
+    AuthModule,
+    UsersModule,
+    CommonModule,
   ],
   controllers: [AppController],
   providers: [AppService],
