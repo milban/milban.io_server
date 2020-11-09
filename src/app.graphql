@@ -5,3 +5,7 @@ interface Node {
 }
 
 scalar Date
+
+type Query {
+    signIn(id: String!, password: String!): User
+}

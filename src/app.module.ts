@@ -14,10 +14,11 @@ import { join } from 'path';
       https://www.apollographql.com/docs/apollo-server/api/apollo-server/#constructor-options-lt-ApolloServer-gt
      */
     GraphQLModule.forRoot({
+      context: ({ req }) => ({ req }),
       typePaths: ['./**/*.graphql'],
       definitions: {
         path: join(process.cwd(), 'src/graphql.schema.ts'),
-        outputAs: 'interface',
+        outputAs: 'class',
         emitTypenameField: true,
       },
     }),
