@@ -6,6 +6,7 @@ import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { CommonModule } from './common/common.module';
 import { join } from 'path';
+import { SignInResolver } from './auth/sign-in/sign-in.resolver';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { join } from 'path';
     GraphQLModule.forRoot({
       context: ({ req }) => ({ req }),
       typePaths: ['./**/*.graphql'],
+      playground: true,
       definitions: {
         path: join(process.cwd(), 'src/graphql.schema.ts'),
         outputAs: 'class',
@@ -27,6 +29,6 @@ import { join } from 'path';
     CommonModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, SignInResolver],
 })
 export class AppModule {}

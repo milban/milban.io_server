@@ -1,0 +1,9 @@
+input SignInInput {
+    userId: String!
+    username: String!
+    password: String!
+}
+
+extend type Query {
+    signIn(input: SignInInput!): String
+}
