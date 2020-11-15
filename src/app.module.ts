@@ -6,7 +6,6 @@ import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { CommonModule } from './common/common.module';
 import { join } from 'path';
-import { SignInResolver } from './auth/sign-in/sign-in.resolver';
 
 @Module({
   imports: [
@@ -29,6 +28,6 @@ import { SignInResolver } from './auth/sign-in/sign-in.resolver';
     CommonModule,
   ],
   controllers: [AppController],
-  providers: [AppService, SignInResolver],
+  providers: [AppService],
 })
 export class AppModule {}
