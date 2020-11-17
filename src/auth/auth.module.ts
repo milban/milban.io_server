@@ -6,6 +6,7 @@ import { JwtModule } from '@nestjs/jwt';
 import { jwtConstants } from './constants';
 import { JwtStrategy } from './jwt.Strategy';
 import { SignInResolver } from './sign-in/sign-in.resolver';
+import { WhoAmIResolver } from './who-am-i/who-am-i.resolver';
 
 @Module({
   imports: [
@@ -13,10 +14,10 @@ import { SignInResolver } from './sign-in/sign-in.resolver';
     PassportModule.register({ defaultStrategy: 'jwt' }),
     JwtModule.register({
       secret: jwtConstants.secret,
-      signOptions: { expiresIn: '60s' },
+      signOptions: { expiresIn: '7d' },
     }),
   ],
-  providers: [AuthService, JwtStrategy, SignInResolver],
+  providers: [AuthService, JwtStrategy, SignInResolver, WhoAmIResolver],
   exports: [AuthService, PassportModule],
 })
 export class AuthModule {}

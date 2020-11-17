@@ -8,10 +8,10 @@ export class SignInResolver {
 
   @Query()
   async signIn(@Args('input') input: SignInInput): Promise<string> {
-    const user: Omit<User, 'password'> = await this.authService.validateUser(
+    const user: User = await this.authService.validateUser(
       input.userId,
       input.password,
     );
-    return this.authService.login(user)?.access_token;
+    return this.authService.issueToken(user).access_token;
   }
 }
