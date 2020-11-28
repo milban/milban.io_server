@@ -35,3 +35,6 @@ lerna-debug.log*
 
 # Generate
 ./src/graphql.schema.ts
+
+# Env
+**/.env*
