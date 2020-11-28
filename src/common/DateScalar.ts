@@ -4,15 +4,15 @@ import { Injectable } from '@nestjs/common';
 
 @Injectable()
 @Scalar('Date')
-export class DateScalar implements CustomScalar<number, Date> {
+export class DateScalar implements CustomScalar<Date, Date> {
   description = 'Date custom scalar type';
 
-  parseValue(value: number): Date {
-    return new Date(value);
+  parseValue(value: Date): Date {
+    return value;
   }
 
-  serialize(value: Date): number {
-    return value.getTime();
+  serialize(value: Date): Date {
+    return value;
   }
 
   parseLiteral(ast: ValueNode): Date {
