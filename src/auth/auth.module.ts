@@ -7,6 +7,7 @@ import { jwtConstants } from './constants';
 import { JwtStrategy } from './jwt.Strategy';
 import { SignInResolver } from './sign-in/sign-in.resolver';
 import { WhoAmIResolver } from './who-am-i/who-am-i.resolver';
+import { SignUpResolver } from 'src/auth/sign-up/sign-up.resolver';
 
 @Module({
   imports: [
@@ -17,7 +18,13 @@ import { WhoAmIResolver } from './who-am-i/who-am-i.resolver';
       signOptions: { expiresIn: '7d' },
     }),
   ],
-  providers: [AuthService, JwtStrategy, SignInResolver, WhoAmIResolver],
+  providers: [
+    AuthService,
+    JwtStrategy,
+    SignInResolver,
+    WhoAmIResolver,
+    SignUpResolver,
+  ],
   exports: [AuthService, PassportModule],
 })
 export class AuthModule {}

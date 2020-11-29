@@ -7,3 +7,4 @@ interface Node {
 scalar Date
 
 type Query
+type Mutation

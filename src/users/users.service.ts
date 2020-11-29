@@ -13,4 +13,10 @@ export class UsersService {
       where: userWhereUniqueInput,
     });
   }
+
+  async createUser(data: Prisma.UserCreateInput) {
+    return this.prisma.user.create({
+      data,
+    });
+  }
 }
