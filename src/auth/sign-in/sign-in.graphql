@@ -3,6 +3,6 @@ input SignInInput {
     password: String!
 }
 
-extend type Query {
+extend type Mutation {
     signIn(input: SignInInput!): String
 }
