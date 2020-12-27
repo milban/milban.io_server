@@ -5,6 +5,7 @@ import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { CommonModule } from './common/common.module';
 import { join } from 'path';
+import { PostsModule } from './posts/posts.module';
 
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import { join } from 'path';
     AuthModule,
     UsersModule,
     CommonModule,
+    PostsModule,
   ],
   providers: [AppService],
 })

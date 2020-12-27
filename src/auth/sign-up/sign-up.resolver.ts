@@ -3,14 +3,14 @@ import { AuthService } from 'src/auth/auth.service';
 import { SignUpInput, User } from 'src/graphql.schema';
 import { UsersService } from 'src/users/users.service';
 
-@Resolver('SingUp')
+@Resolver()
 export class SignUpResolver {
   constructor(
     private usersService: UsersService,
     private authService: AuthService,
   ) {}
 
-  @Mutation()
+  @Mutation('signUp')
   async signUp(@Args('input') input: SignUpInput): Promise<string> {
     const { userId, username, password } = input;
     const user: User = await this.usersService.createUser({

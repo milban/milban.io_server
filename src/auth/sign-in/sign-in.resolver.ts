@@ -2,11 +2,11 @@ import { Args, Mutation, Resolver } from '@nestjs/graphql';
 import { AuthService } from '../auth.service';
 import { SignInInput, User } from '../../graphql.schema';
 
-@Resolver('SignIn')
+@Resolver()
 export class SignInResolver {
   constructor(private authService: AuthService) {}
 
-  @Mutation()
+  @Mutation('signIn')
   async signIn(@Args('input') input: SignInInput): Promise<string> {
     const user: User = await this.authService.validateUser(
       input.userId,

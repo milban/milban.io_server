@@ -15,4 +15,17 @@ model User {
   userId    String   @unique
   username  String
   password  String
+  Post      Post[]
+}
+
+model Post {
+  /// This field's default value can currently not be parsed: `public.uuid_generate_v4()`.
+  id        String   @id @default(dbgenerated())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+  title     String   @unique
+  content   String?
+  isPublish Boolean
+  authorId  String
+  User      User     @relation(fields: [authorId], references: [id])
 }

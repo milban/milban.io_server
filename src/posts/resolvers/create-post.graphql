@@ -1,0 +1,7 @@
+input CreatePostInput {
+    title: String!
+}
+
+extend type Mutation {
+    createPost(input: CreatePostInput!): Post
+}

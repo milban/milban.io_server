@@ -1,0 +1,9 @@
+type Post implements Node {
+    id: ID!
+    createdAt: Date!
+    updatedAt: Date!
+    title: String!
+    content: String
+    isPublish: Boolean!
+    author: User!
+}
