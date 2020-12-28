@@ -5,11 +5,11 @@ import { UseGuards } from '@nestjs/common';
 import { GqlAuthGuard } from '../gql-auth.guard';
 import { CurrentUser } from '../decorator/current-user.decorator';
 
-@Resolver('WhoAmI')
+@Resolver()
 export class WhoAmIResolver {
   constructor(private usersService: UsersService) {}
 
-  @Query()
+  @Query('whoAmI')
   @UseGuards(GqlAuthGuard)
   async whoAmI(@CurrentUser() user: User): Promise<User> {
     return await this.usersService.user({

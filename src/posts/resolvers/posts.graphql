@@ -1,0 +1,18 @@
+input PostsCursor {
+    id: String
+    title: String
+}
+
+input PostsInput {
+    cursor: PostsCursor
+    take: Int
+}
+
+type PostsPage {
+    totalCount: Int!
+    edges: [Post]!
+}
+
+extend type Query {
+    posts(input: PostsInput!): PostsPage!
+}

@@ -14,7 +14,7 @@ export class PostsService {
     });
   }
 
-  async posts(args: Prisma.FindFirstPostArgs) {
+  async posts(args: Prisma.FindFirstPostArgs): Promise<Post[] | null> {
     return this.prisma.post.findMany(args);
   }
 
