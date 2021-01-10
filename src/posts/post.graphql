@@ -5,5 +5,5 @@ type Post implements Node {
     title: String!
     content: String
     isPublish: Boolean!
-    author: User!
+    author: User
 }

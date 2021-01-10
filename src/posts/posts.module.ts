@@ -1,17 +1,17 @@
 import { Module } from '@nestjs/common';
 import { PostsService } from './posts.service';
 import { PrismaService } from '../prisma.service';
-import { CreatePostResolver } from './resolvers/create-post.resolver';
 import { UsersService } from '../users/users.service';
-import { PostsResolver } from './resolvers/posts.resolver';
+import { PostResolver } from './resolvers/post.resolver';
+import { PostsByCursorNodeResolver } from './resolvers/posts-by-cursor-node.resolver';
 
 @Module({
   providers: [
     PostsService,
     PrismaService,
     UsersService,
-    CreatePostResolver,
-    PostsResolver,
+    PostResolver,
+    PostsByCursorNodeResolver,
   ],
 })
 export class PostsModule {}

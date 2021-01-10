@@ -6,18 +6,18 @@ import {
   Resolver,
 } from '@nestjs/graphql';
 import { PostsService } from '../posts.service';
-import { CreatePostInput, User } from '../../graphql.schema';
 import { UseGuards } from '@nestjs/common';
 import { GqlAuthGuard } from '../../auth/gql-auth.guard';
 import { CurrentUser } from '../../auth/decorator/current-user.decorator';
-import { UsersService } from '../../users/users.service';
+import { CreatePostInput, User } from '../../graphql.schema';
 import { Post } from '@prisma/client';
+import { UsersService } from '../../users/users.service';
 
 @Resolver('Post')
-export class CreatePostResolver {
+export class PostResolver {
   constructor(
-    private usersService: UsersService,
     private postsService: PostsService,
+    private usersService: UsersService,
   ) {}
 
   @Mutation('createPost')

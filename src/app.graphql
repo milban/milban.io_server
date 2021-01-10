@@ -1,7 +1,12 @@
 interface Node {
     id: ID!
-    createdAt: Date!
-    updatedAt: Date!
+}
+
+type PageInfo {
+    hasNextPage: Boolean!
+    hasPreviousPage: Boolean!
+    startCursor: String
+    endCursor: String
 }
 
 scalar Date

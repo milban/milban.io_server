@@ -1,18 +1,18 @@
-input PostsCursor {
-    id: String
-    title: String
+type PostsByCursorEdge {
+    cursor: ID
+    node: Post
 }
 
-input PostsInput {
-    cursor: PostsCursor
-    take: Int
+type PostsByCursorConnection {
+    edges: [PostsByCursorEdge]!
+    pageInfo: PageInfo!
 }
 
-type PostsPage {
-    totalCount: Int!
-    edges: [Post]!
+type PostsByCursorNode implements Node {
+    id: ID!
+    posts(first: Int, last: Int, before:ID, after: ID): PostsByCursorConnection
 }
 
 extend type Query {
-    posts(input: PostsInput!): PostsPage!
+    postsByCursor: PostsByCursorNode!
 }

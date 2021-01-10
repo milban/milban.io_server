@@ -23,4 +23,20 @@ export class PostsService {
       data,
     });
   }
+
+  async findFirstPost(args: Prisma.FindFirstPostArgs): Promise<Post | null> {
+    return this.prisma.post.findMany({
+      ...args,
+      take: 1,
+    })[0];
+  }
+
+  async findLastPost(args: Prisma.FindFirstPostArgs): Promise<Post | null> {
+    const totalCount: number = (await this.prisma.post.findMany(args)).length;
+    return this.prisma.post.findMany({
+      ...args,
+      take: 1,
+      skip: totalCount - 1,
+    })[0];
+  }
 }
